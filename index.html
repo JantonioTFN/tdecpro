@@ -1,50 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>TDECpro – Turner Decision Engine Computation</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    body { margin:0; font-family:Arial, sans-serif; background:#0f1115; color:#fff; }
-    header { padding:45px 20px 25px; text-align:center; }
-    h1 { margin:0 0 10px; font-size:32px; letter-spacing:0.04em; }
-    h2 { margin:0; font-weight:400; color:#cfcfcf; }
-    .section { max-width:850px; margin:30px auto; padding:0 20px; line-height:1.5; }
-    .card { background:#15181d; padding:22px 20px; border-radius:8px; margin-bottom:20px; }
-    .btn { display:inline-block; background:#f7b500; color:#000; padding:12px 26px; border-radius:4px; text-decoration:none; font-weight:bold; }
-    footer { text-align:center; color:#888; font-size:13px; padding:30px 0 40px; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #0e0f10;
+      color: #f4f4f4;
+      line-height: 1.6;
+    }
+    .page {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 60px 18px 80px;
+    }
+    h1, h2, h3 {
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+    h1 {
+      font-size: 2.4rem;
+      margin-bottom: 0.3rem;
+    }
+    .eyebrow {
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      color: #aaa;
+      margin-bottom: 0.6rem;
+    }
+    .lead {
+      font-size: 1.15rem;
+      max-width: 46rem;
+      color: #ddd;
+    }
+    hr {
+      border: 0;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      margin: 2.4rem 0 2rem;
+    }
+    h2.section-title {
+      font-size: 1.25rem;
+      margin-bottom: 0.4rem;
+    }
+    ul {
+      margin-left: 1.1rem;
+    }
+    .cta-box {
+      margin-top: 2.2rem;
+      padding: 1.6rem 1.5rem;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 14px;
+    }
+    .btn {
+      display: inline-block;
+      background: #f6b100;
+      color: #000;
+      padding: 0.7rem 1.5rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 0.8rem;
+    }
+    .small {
+      font-size: 0.8rem;
+      color: #aaa;
+      margin-top: 0.8rem;
+    }
+    code {
+      background: rgba(255,255,255,0.05);
+      padding: 2px 6px;
+      border-radius: 6px;
+      font-size: 0.78rem;
+    }
+    @media (max-width: 640px) {
+      h1 { font-size: 2rem; }
+      .page { padding-top: 44px; }
+    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>TDECpro</h1>
-    <h2>More than an indicator. A real-time decision engine for market-mover intention.</h2>
-  </header>
+  <main class="page">
+    <div class="eyebrow">TDEC – Turner Decision Engine Computation</div>
+    <h1>More than an indicator.</h1>
+    <p class="lead">
+      Private release. TDEC is a NinjaTrader&nbsp;8 add-on built to answer one question in real, present-time market action:
+      <br><strong>“Is there market mover intention in this bar right now?”</strong>
+      <br><br>
+      If the bar shows real intention from the players who can actually move ES, TDEC speaks. If the bar is pretty but empty, TDEC stays quiet. That selectiveness is the edge.
+    </p>
 
-  <div class="section">
-    <div class="card">
-      <h3 style="margin-top:0;">Private release</h3>
-      <p>TDECpro is a NinjaTrader add-on derived from 106,000+ hours of multi-market study. It reads current order-flow power and intention and only prints when the market is actually being moved.</p>
-      <p>This page is for early/founder access only.</p>
-    </div>
+    <hr />
 
-    <div class="card">
-      <h3 style="margin-top:0;">Request access</h3>
-      <p>If you were sent this link, you’re on the short list. Tell me who you are and what platform you trade.</p>
+    <h2 class="section-title">The problem</h2>
+    <p>
+      Markets don’t move just because there was news. Markets move because someone with size intended to move it. That’s why the same headline can send price up, down, or nowhere.
+    </p>
+    <p>
+      Most traders are still trading indirect coincidences to past movement — moving averages, oscillators, calendar cycles, old ranges, even cute delta theories. Those can be right once and then completely wrong on the very next day because the second move had no mover intention behind it. The market doesn’t care about cute timing. It moves when real money intends to move it.
+    </p>
+    <p><strong>Indicators talk from the rear-view mirror. TDEC judges the present.</strong></p>
+
+    <hr />
+
+    <h2 class="section-title">What TDEC is</h2>
+    <p>
+      TDEC is a computational decision engine that inspects the live bar and evaluates the relationship between effort and result.
+    </p>
+    <p>On every 1-second ES bar it asks:</p>
+    <ul>
+      <li><strong>Significance</strong> – is this bar big enough to matter to professionals</li>
+      <li><strong>Directional efficiency</strong> – did effort actually push price, or was it expensive and sloppy</li>
+      <li><strong>Context</strong> – do the surrounding bars support the conclusion of intention or was it a fake</li>
+    </ul>
+    <p>
+      If those align, TDEC prints. If they don’t, TDEC stays silent. <strong>Silence is a feature</strong> — it kept output to about 1.4 signals per day in real market action, which is where a human can actually execute.
+    </p>
+
+    <hr />
+
+    <h2 class="section-title">Proof in real market, not highlight days</h2>
+    <p>Deliberately ugly 2-week stretch, right after:</p>
+    <ul>
+      <li>a 250-point ES slam</li>
+      <li>and a 100-point gap-and-hold, grind-up couple of weeks</li>
+    </ul>
+    <p>
+      <strong>Period:</strong> 10 trading days<br>
+      <strong>Signals:</strong> 14<br>
+      <strong>Outcomes:</strong> 12 straight profits; 2 trades could be managed early for +5 or flipped for +10 based on the inefficient counter-pushes
+    </p>
+    <p>
+      <strong>Net:</strong> TDEC did not produce a day where the trader had to say, “that just didn’t work.” That is extremely rare for a real-time tool in that context. This is why TDEC is more than an indicator.
+    </p>
+
+    <hr />
+
+    <h2 class="section-title">Why it wins</h2>
+    <ul>
+      <li><strong>Present-time, not pattern-time.</strong> Decides on this bar, not what used to work.</li>
+      <li><strong>Effort/result aware.</strong> Sees impressive-looking bars that actually cost too much.</li>
+      <li><strong>Selective.</strong> Most indicators talk too much; TDEC only talks when market mover intention is visible.</li>
+      <li><strong>Context-friendly.</strong> In the hands of a trader who can see building or diminishing power, it becomes an ongoing edge, not a one-day trick.</li>
+    </ul>
+
+    <hr />
+
+    <h2 class="section-title">Who it’s for</h2>
+    <p>
+      TDEC is for experienced ES / futures traders who already know structure and just want a present-time judge of whether the push they are seeing is real.
+    </p>
+    <p>
+      It is <strong>not</strong> for people who want magic arrows on 5-minute charts. It is for traders who can look at a TDEC print and say, “Given this context, that’s tradable.”
+    </p>
+
+    <hr />
+
+    <h2 class="section-title">Positioning</h2>
+    <ul>
+      <li><strong>Name:</strong> Turner Decision Engine Computation (TDEC)</li>
+      <li><strong>Core:</strong> market mover intention</li>
+      <li><strong>Platform:</strong> NinjaTrader&nbsp;8</li>
+      <li><strong>Proof:</strong> 10 days, 14 signals, 0 straight losers, 2 managed</li>
+      <li><strong>Distribution:</strong> limited / invitation / founder-level access</li>
+    </ul>
+
+    <div class="cta-box">
+      <h2 class="section-title">Bottom line</h2>
       <p>
-        <a class="btn" href="mailto:JantonioTFN@gmail.com?subject=TDECpro%20Access%20Request">Request TDECpro</a>
+        Indicators tell you what used to work. <br>
+        <strong>TDEC tells you whether the market intends to move right now.</strong>
       </p>
-      <p style="font-size:12px;color:#aaa;">Digital software add-on for experienced traders. No brokerage or money management.</p>
+      <a class="btn" href="mailto:jantonioTFN@gmail.com?subject=Request%20TDECpro%20Access&body=Name%3A%0ATrading%20platform%3A%0AExperience%20level%20(years)%3A%0AHow%20you%20plan%20to%20use%20it%3A">
+        Request TDECpro access
+      </a>
+      <p class="small">
+        Tell me who you are and what platform you trade. This page is for early / founder access only. No brokerage or money management.
+      </p>
     </div>
-
-    <div class="card">
-      <h3 style="margin-top:0;">White paper</h3>
-      <p>The executive white paper is being finalized. Early recipients will get it directly from the author.</p>
-    </div>
-  </div>
-
-  <footer>
-    © <script>document.write(new Date().getFullYear())</script> TDECpro
-  </footer>
+  </main>
 </body>
 </html>
